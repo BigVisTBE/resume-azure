@@ -5,5 +5,6 @@ a static website using cloud services instead of adding the site to a virtual ma
 ## Getting Started
 
 - Frontend folder contains the website template that you can modify
+- Backend folder contains a terraform folder to build out the infrastructure
 - Template used for this website is by CeeVee [Template by CeeVee](https://www.styleshout.com/free-templates/ceevee/)
 - main.js has the code for the visitor counter
