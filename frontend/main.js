@@ -1,8 +1,8 @@
 window.addEventListener('DOMContentLoaded', (event) =>{
-    getVisitCount
+    getVisitCount();
 })
-
-const functionApi = '';
+// Added the link below from the output of the function
+const functionApi = 'http://localhost:7071/api/GetResumeCounter';
 
 // function for counter
 const getVisitCount = () => {
