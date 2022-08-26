@@ -64,3 +64,7 @@ resource "azurerm_cosmosdb_sql_container" "container" {
   database_name = azurerm_cosmosdb_sql_database.db.name
   partition_key_path = "/id"
 }
+
+#After the infra is setup you will still need to add items manually.
+#I havn't found a way to do it through terraform yet
+# Link to the video abountcreating the item "https://youtu.be/ieYrBWmkfno?t=1758"
