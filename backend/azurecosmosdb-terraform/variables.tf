@@ -22,3 +22,8 @@ variable "cosmosdbcontainer" {
     type = string
     default = "resumecounter"
 }
+
+variable "saname" {
+  type = string
+  default = "azure-resume-sa"
+}

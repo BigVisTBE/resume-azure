@@ -65,6 +65,20 @@ resource "azurerm_cosmosdb_sql_container" "container" {
   partition_key_path = "/id"
 }
 
+# #Confiure a storage account
+# resource "azurerm_storage_account" "virg-azureresumeSA" {
+#   name                     = var.saname
+#   resource_group_name      = var.rgname
+#   location                 = var.rglocation
+#   account_tier             = "Standard"
+#   account_replication_type = "GRS"
+
+#   tags = {
+#     "ENV" = "dev"
+#     terraform = "true"
+#  }
+# }
+
 #After the infra is setup you will still need to add items manually.
-#I havn't found a way to do it through terraform yet
+#I haven't found a way to do it through terraform yet
 # Link to the video abountcreating the item "https://youtu.be/ieYrBWmkfno?t=1758"
