@@ -65,19 +65,45 @@ resource "azurerm_cosmosdb_sql_container" "container" {
   partition_key_path = "/id"
 }
 
-# #Confiure a storage account
-# resource "azurerm_storage_account" "virg-azureresumeSA" {
-#   name                     = var.saname
-#   resource_group_name      = var.rgname
-#   location                 = var.rglocation
-#   account_tier             = "Standard"
-#   account_replication_type = "GRS"
+resource "azurerm_storage_account" "saname" {
+  name                     = var.saname
+  resource_group_name      = var.rgname
+  location                 = var.rglocation
+  account_tier             = "Standard"
+  account_replication_type = "GRS"
+  tags = {
+    "ENV" = "dev"
+    terraform = "true"
+    }
+}
 
-#   tags = {
-#     "ENV" = "dev"
-#     terraform = "true"
-#  }
-# }
+resource "azurerm_service_plan" "faserviceplanname" {
+  name                = var.faserviceplanname
+  location            = var.rglocation
+  resource_group_name = var.rgname
+  os_type             = "Linux"
+  sku_name            = "Y1"
+  tags = {
+    "ENV" = "dev"
+    terraform = "true"
+  }
+}
+
+resource "azurerm_linux_function_app" "faname" {
+  name                       = var.faname
+  location                   = var.rglocation
+  resource_group_name        = var.rgname
+  service_plan_id            = azurerm_service_plan.faserviceplanname.id
+  storage_account_name       = var.saname
+  storage_account_access_key = azurerm_storage_account.saname.primary_access_key
+
+  site_config {}
+
+  tags = {
+    "ENV" = "dev"
+    terraform = "true"
+  }
+}
 
 #After the infra is setup you will still need to add items manually.
 #I haven't found a way to do it through terraform yet

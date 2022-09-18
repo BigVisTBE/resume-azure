@@ -25,5 +25,15 @@ variable "cosmosdbcontainer" {
 
 variable "saname" {
   type = string
-  default = "azure-resume-sa"
+  default = "vhazureresumesa"
+}
+
+variable "faserviceplanname" {
+    type = string
+    default = "vhazureresumeapp"
+}
+
+variable "faname" {
+    type = string
+    default = "vhgetresumecounter"
 }
